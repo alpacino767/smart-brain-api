@@ -20,7 +20,6 @@ const handleRegister = (req, res, db, bcrypt) => {
                         name: name,
                         joined: new Date()
                     }).then(user => {
-                        console.log("see the user from register", user);
                         res.json(user[0]);
                     })
             })
