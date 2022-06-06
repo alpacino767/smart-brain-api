@@ -13,12 +13,12 @@ const profile = require('./controllers/profile');
 const image = require('./controllers/image');
 
 
-// process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0; 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0; 
 const db = knex({
     client: 'pg',
     connection: {
         connectionString: process.env.DAATABASE_URL,
-        ssl:{ rejectUnauthorized: false}
+        ssl: true
        
     }
 });
@@ -38,3 +38,8 @@ app.post('/imageurl', (req, res) => {image.handleApiCall(req, res, )})
 app.listen(process.env.PORT || 3000, () => {
     console.log(`app is running on port ${process.env.PORT}`);
 })
+ 
+app.listen(process.env.PORT || 5000, () => {
+    const port = server.address().port;
+    console.log(`Express is working on port ${port}`);
+  });
